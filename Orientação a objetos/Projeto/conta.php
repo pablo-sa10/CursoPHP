@@ -8,13 +8,26 @@
 <body>
     <?php
         class Conta{
-            public string $cpf;
-            public string $nome;
-            public float $saldo;
+            public $cpf;
+            public $nome;
+            public $saldo;
+
+            public function __toString() {
+                return "CPF: $this->cpf, Nome: $this->nome, Saldo: $this->saldo";
+            }
         }
 
-        $umaNovaConta = new Conta();
-        $umaNovaConta->saldo = 200;
+        $umaConta = new Conta();
+        $umaConta->saldo = 200;
+        $umaConta->cpf = '123456789';
+        $umaConta->nome = 'pablo';
+
+        $segundaConta = new Conta();
+        $segundaConta->cpf = '987.654.321-10';
+        $segundaConta->nome = 'Patricia';
+        $segundaConta->saldo = 1500;
+
+        echo "$umaConta";
 
     ?>
 </body>
