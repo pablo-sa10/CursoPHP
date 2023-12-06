@@ -11,23 +11,13 @@
         require_once 'Titular.php';
         
         $primeiraConta = new Conta(new Titular('123456789-10', 'Pablo'));
-        $contaDois = new Conta(new Titular('123456789-12', "Gustavo"));
-
-
-        $primeiraConta->depositar(500);
-        $primeiraConta->sacar(300);
-
-        $contaDois->depositar(1000);
-        $contaDois->transferir(500, $primeiraConta);
-
+        $gustavo = new Titular('123456789-12', "Gustavo");
+        $contaDois = new Conta($gustavo);
 
         echo "Nome: " . $primeiraConta->getNomeTitular(). "<br>";
-        echo "Cpf: " . $primeiraConta->getCpfTitular() . "<br>";
-        echo "Saldo: " . $primeiraConta->getSaldo() . "<br><br>";
+        echo "CPF: " . $primeiraConta->getCpfTitular() . "<br>";
 
-        echo $contaDois->getSaldo() . "<br>";
-
-        echo Conta::getNumeroDeContas()
+        echo "Numero de contas: " . Conta::getNumeroDeContas()
     ?>
 </body>
 </html>

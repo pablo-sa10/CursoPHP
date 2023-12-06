@@ -7,14 +7,14 @@
 </head>
 <body>
     <?php
-        class Titular{
-            private $cpf;
+        class Funcionario{
             private $nome;
- 
-            public function __construct($cpf, $nome){
+            private $cpf;
+
+            public function __construct($cpf, $nome)
+            {
                 $this->cpf = $cpf;
                 $this->nome = $nome;
-                $this->validaNome($nome);
             }
 
             public function getCpf(){
@@ -24,15 +24,10 @@
             public function getNome(){
                 return $this->nome;
             }
-
-            //Validar dados
-            private function validaNome($nome){
-                if(strlen($nome) < 4){
-                    echo"nome precisa ter pelo menos 4 caracteres<br>";
-                    exit();
-                }    
-            }
         }
+
+        $pablo = new Funcionario(123456789, "pablo");
+        $titular = new Titular($pablo);
     ?>
 </body>
 </html>
