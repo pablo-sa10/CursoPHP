@@ -11,12 +11,14 @@
             private $cpf;
             private $nome;
             private $saldo = 0;
-
+            private static $numeroDeContas = 0;
 
             public function __construct($cpf, $nome)
             {
                 $this->cpf = $cpf;
+                $this->validaNome($nome);
                 $this->nome = $nome;
+                Conta::$numeroDeContas++;
             }
             
 
@@ -48,6 +50,25 @@
 
                 $this->sacar($valorATransferir);
                 $contaDestino->depositar($valorATransferir);
+            }
+
+            //Validar dados
+            private function validaNome($nome){
+                if(strlen($nome) < 4){
+                    echo"nome precisa ter pelo menos 4 caracteres<br>";
+                    exit();
+                }    
+            }
+
+
+            //contar numero de contas
+            public static function getNumeroDeContas(){
+                return Conta::$numeroDeContas;
+            }
+
+            public function __destruct()
+            {
+                self::$numeroDeContas--;
             }
             
             //recuperar dados do cliente

@@ -24,7 +24,9 @@
         echo "Cpf: " . $primeiraConta->getCpf() . "<br>";
         echo "Saldo: " . $primeiraConta->getSaldo() . "<br><br>";
 
-        echo $contaDois->getSaldo()
+        echo $contaDois->getSaldo() . "<br>";
+
+        echo Conta::getNumeroDeContas()
     ?>
 </body>
 </html>
