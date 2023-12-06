@@ -10,15 +10,37 @@
         class Conta{
             public $cpf;
             public $nome;
-            public $saldo;
+            public $saldo = 0;
 
-            public function sacar(float $valorASacar){
+            public function sacar($valorASacar){
                 if ($valorASacar > $this->saldo) {
                     echo "Saldo indisponível";
-                } else {
-                    $this->saldo -= $valorASacar;
+                    return;
                 }
+
+                $this->saldo -= $valorASacar;
+                
             }
+
+            public function depositar($valorADepositar){
+                if($valorADepositar < 0){
+                    echo "valor precisa ser disponível";
+                    return;
+                }
+
+                $this->saldo += $valorADepositar;
+            }
+
+            public function transferir($valorATransferir, Conta $contaDestino){
+                if($valorATransferir > $this->saldo){
+                    echo "saldo indisponivel";
+                    return;
+                }
+                
+                $this->sacar($valorATransferir);
+                $contaDestino->depositar($valorATransferir);
+            }
+            
         }
     ?>
 </body>
