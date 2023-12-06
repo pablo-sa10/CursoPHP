@@ -8,19 +8,30 @@
 <body>
     <?php
         class Conta{
-            private $cpf;
-            private $nome;
+            private $titular;
             private $saldo = 0;
             private static $numeroDeContas = 0;
 
-            public function __construct($cpf, $nome)
+            public function __construct(Titular $titular)
             {
-                $this->cpf = $cpf;
-                $this->validaNome($nome);
-                $this->nome = $nome;
-                Conta::$numeroDeContas++;
+                $this->titular = $titular;
+                self::$numeroDeContas++;
             }
-            
+
+            //recuperar dados do cliente
+            public function getNomeTitular(){
+                return $this->titular->getNome();
+            }
+
+            public function getCpfTitular(){
+                return $this->titular->getCpf();
+            }
+
+            public function getSaldo(){
+                return $this->saldo;
+            }
+
+
             //contar numero de contas
             public static function getNumeroDeContas(){
                 return Conta::$numeroDeContas;
@@ -31,18 +42,6 @@
                 self::$numeroDeContas--;
             }
             
-            //recuperar dados do cliente
-            public function getSaldo(){
-                return $this->saldo;
-            }
-            
-            public function getNome(){
-                return $this->nome;
-            }
-
-            public function getCpf(){
-                return $this->cpf;
-            }
 
             //funcoes de movimentação de dinheiro
             public function depositar($valorADepositar){
@@ -72,14 +71,6 @@
 
                 $this->sacar($valorATransferir);
                 $contaDestino->depositar($valorATransferir);
-            }
-
-            //Validar dados
-            private function validaNome($nome){
-                if(strlen($nome) < 4){
-                    echo"nome precisa ter pelo menos 4 caracteres<br>";
-                    exit();
-                }    
             }
         }
     ?>
