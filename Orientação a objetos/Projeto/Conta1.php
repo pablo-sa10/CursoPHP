@@ -21,6 +21,28 @@
                 Conta::$numeroDeContas++;
             }
             
+            //contar numero de contas
+            public static function getNumeroDeContas(){
+                return Conta::$numeroDeContas;
+            }
+
+            public function __destruct()
+            {
+                self::$numeroDeContas--;
+            }
+            
+            //recuperar dados do cliente
+            public function getSaldo(){
+                return $this->saldo;
+            }
+            
+            public function getNome(){
+                return $this->nome;
+            }
+
+            public function getCpf(){
+                return $this->cpf;
+            }
 
             //funcoes de movimentação de dinheiro
             public function depositar($valorADepositar){
@@ -58,30 +80,6 @@
                     echo"nome precisa ter pelo menos 4 caracteres<br>";
                     exit();
                 }    
-            }
-
-
-            //contar numero de contas
-            public static function getNumeroDeContas(){
-                return Conta::$numeroDeContas;
-            }
-
-            public function __destruct()
-            {
-                self::$numeroDeContas--;
-            }
-            
-            //recuperar dados do cliente
-            public function getSaldo(){
-                return $this->saldo;
-            }
-            
-            public function getNome(){
-                return $this->nome;
-            }
-
-            public function getCpf(){
-                return $this->cpf;
             }
         }
     ?>
