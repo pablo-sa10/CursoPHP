@@ -47,7 +47,7 @@
                 return $this->saldo;
             }
 
-            
+
             //contar numero de contas
             public static function getNumeroDeContas(){
                 return Conta::$numeroDeContas;

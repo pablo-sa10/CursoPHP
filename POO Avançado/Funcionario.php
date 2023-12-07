@@ -9,12 +9,20 @@
     <?php
         class Funcionario extends Pessoa{
             private $cargo;
+            private $pessoa;
 
-            public function __construct($nome, $cpf, $cargo)
+            public function __construct(Pessoa $pessoa, $cargo)
             {
-                $this->nome = $nome;
-                $this->cpf = $cpf;
+                $this->pessoa = $pessoa;
                 $this->cargo = $cargo;
+            }
+
+            public function getNome(){
+                return $this->pessoa->getNome();
+            }
+
+            public function getCpf(){
+                return $this->pessoa->getCpf();
             }
 
             public function getCargo(){
