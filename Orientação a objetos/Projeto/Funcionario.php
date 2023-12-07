@@ -7,15 +7,14 @@
 </head>
 <body>
     <?php
-        class Titular extends Pessoa{
-            private $endereco;
+        class Funcionario{
+            private $cargo;
             private $pessoa;
-            // public function __construct($nome, $cpf, $endereco)
-            public function __construct(Pessoa $pessoa, $endereco)
+
+            public function __construct(Pessoa $pessoa, $cargo)
             {
                 $this->pessoa = $pessoa;
-                // $this->nome = $nome;
-                $this->endereco = $endereco;
+                $this->cargo = $cargo;
             }
 
             public function getNome(){
@@ -26,11 +25,9 @@
                 return $this->pessoa->getCpf();
             }
 
-            public function getEndereco(){
-                return $this->endereco;
+            public function getCargo(){
+                return $this->cargo;
             }
-
-            
         }
     ?>
 </body>

@@ -70,12 +70,14 @@
             }
 
             public function sacar($valorASacar){
-                if ($valorASacar > $this->saldo) {
+                $tarifa = $valorASacar * 0.05;
+                $valorSaque = $valorASacar + $tarifa;
+                if ($valorSaque > $this->saldo) {
                     echo "Saldo indisponível<br>";
                     return;
                 }
 
-                $this->saldo -= $valorASacar;
+                $this->saldo -= $valorSaque;
             }
 
             
