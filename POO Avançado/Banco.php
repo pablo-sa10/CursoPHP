@@ -7,14 +7,23 @@
 </head>
 <body>
     <?php
+        require_once 'Pessoa.php';
+        require_once 'endereco.php';
+        require_once 'Titular.php';        
         require_once 'Conta.php';
-        require_once 'Titular.php';
-        require_once 'endereço.php';
+        require_once 'Funcionario.php';
+       
         
-        $primeiraConta = new Conta(new Titular('123456789-10', 'Pablo', new Endereco('Presidente Pudente', 'Barcelona', 'Luis Gonzaga', '100')));
-        $endereco = new Endereco('Mauá', 'Vila Falchi', 'Anibal Vila Real', '225');
-        $gustavo = new Titular('123456789-12', "Gustavo", $endereco);
-        $contaDois = new Conta($gustavo);
+        $pessoa = new Pessoa('Pablo', '123456');
+        // echo "<pre>";
+        // print_r($pessoa);
+        // echo "</pre>";
+
+        $endereco = new Endereco('Mauá', 'Vila Falchi', 'Anibal Vila Real', '225');       
+        // $pablo = new Titular($pessoa->getNome(),$pessoa->getCpf(), $endereco);
+        $pablo = new Titular($pessoa, $endereco);
+        $primeiraConta = new Conta($pablo);
+        $funcionario = new Funcionario("Pablo", "48147717890", "Programador");
 
         echo 
             "Nome: " . $primeiraConta->getNomeTitular() . "<br>" .
@@ -23,9 +32,13 @@
             $primeiraConta->getBairro() . ', ' .
             $primeiraConta->getRua() . ', ' .
             $primeiraConta->getNumero() . '<br>';
+
+        echo "Funcionario: " . $funcionario->getNome() . "<br>";
             
 
-        echo "Numero de contas: " . Conta::getNumeroDeContas()
+        echo "Numero de contas: " . Conta::getNumeroDeContas();
+        $endereco->setCidade('expedito');
+        echo "<Br>nova cidade: ".$endereco->getCidade();
     ?>
 </body>
 </html>

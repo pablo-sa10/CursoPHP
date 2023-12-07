@@ -7,38 +7,30 @@
 </head>
 <body>
     <?php
-        class Titular{
-            private $cpf;
-            private $nome;
+        class Titular extends Pessoa{
             private $endereco;
-
-            public function __construct($cpf, $nome, $endereco)
+            private $pessoa;
+            // public function __construct($nome, $cpf, $endereco)
+            public function __construct(Pessoa $pessoa, $endereco)
             {
-                $this->cpf = $cpf;
-                $this->validaNome($nome);
-                $this->nome = $nome;
+                $this->pessoa = $pessoa;
+                // $this->nome = $nome;
                 $this->endereco = $endereco;
             }
 
-            public function getCpf(){
-                return $this->cpf;
+            public function getNome(){
+                return $this->pessoa->getNome();
             }
 
-            public function getNome(){
-                return $this->nome;
+            public function getCpf(){
+                return $this->pessoa->getCpf();
             }
 
             public function getEndereco(){
                 return $this->endereco;
             }
 
-            //Validar dados
-            private function validaNome($nome){
-                if(strlen($nome) < 4){
-                    echo"nome precisa ter pelo menos 4 caracteres<br>";
-                    exit();
-                }    
-            }
+            
         }
     ?>
 </body>

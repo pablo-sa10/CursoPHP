@@ -13,7 +13,7 @@
             private $rua;
             private $numero;
 
-            public function __construct($cidade, $bairro, $rua, $numero)
+            public function __construct( $cidade , $bairro, $rua, $numero)
             {
                 $this->cidade = $cidade;
                 $this->bairro = $bairro;
@@ -25,6 +25,9 @@
                 return $this->cidade;
             }
 
+            public function setCidade($cidade){
+                $this->cidade = $cidade;
+            }
             public function getBairro(){
                 return $this->bairro;
             }
