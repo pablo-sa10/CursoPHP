@@ -11,7 +11,7 @@
             private $cargo;
             private $pessoa;
 
-            public function __construct(Pessoa $pessoa, $cargo)
+            public function __construct($pessoa, $cargo)
             {
                 $this->pessoa = $pessoa;
                 $this->cargo = $cargo;

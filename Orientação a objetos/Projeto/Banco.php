@@ -7,8 +7,6 @@
 </head>
 <body>
     <?php
-
-    
         require_once 'Pessoa.php';
         require_once 'endereco.php';
         require_once 'Conta/Titular.php';        

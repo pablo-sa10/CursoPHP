@@ -12,7 +12,7 @@
             private $saldo = 0;
             private static $numeroDeContas = 0;
 
-            public function __construct(Titular $titular)
+            public function __construct($titular)
             {
                 $this->titular = $titular;
                 self::$numeroDeContas++;
