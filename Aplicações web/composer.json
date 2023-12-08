@@ -1,0 +1,21 @@
+{
+    "name": "pablo-sa10/curso-php",
+    "description": "Projeto para aprender aplicação web em php",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "PabloSa10\\CursoPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pablo Roberto",
+            "email": "pablomoura2016@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.8",
+        "symfony/dom-crawler": "^4.1",
+        "symfony/css-selector": "^5.4"
+    }
+}
