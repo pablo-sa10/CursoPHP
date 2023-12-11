@@ -12,19 +12,15 @@
         use GuzzleHttp\Client;
         use Symfony\Component\DomCrawler\Crawler;
 
-        $client = new Client();
-        $resposta = $client->request('GET', 'https://cursos.alura.com.br/category/programacao/php');
+        $client = new Client(['base_uri' => "http://alura.com.br/" ]);
+        $crawler = new Crawler();
 
-        $html = $resposta->getBody();
+        $buscador = new \Alura\buscadorDeCursos\bucador($client, $crawler);
+        $cursos = $buscador->buscar("cursos.alura.com.br/category/programacao/php");
 
-        $crawler =  new Crawler();
-        $crawler->addHtmlContent($html);
-
-        $cursos = $crawler->filter('course-card__progress course-card__progress--finished');
-
-        foreach($cursos as $curso){
+        /* foreach($cursos as $curso){
             echo $curso->textContent;
-        }
+        } */
     ?>
 </body>
 </html>
