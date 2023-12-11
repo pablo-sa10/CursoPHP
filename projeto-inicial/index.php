@@ -1,16 +1,13 @@
 <?php
 
     require_once "conexao-bd.php";
-    
-    $sql1 = "SELECT * FROM serenatto.produtos WHERE tipo = 'Café'";
-    $statement = $pdo->query($sql1);
-    
-    $produtosCafe = $statement->fetchAll(PDO::FETCH_ASSOC);
+    require_once "modelo/produto.php";
+    require_once "repositorio/produto-repositorio.php";
 
-    $sql2 = "SELECT * FROM serenatto.produtos WHERE tipo = 'Almoço'";
-    $statement = $pdo->query($sql2);
-    $produtosAlmoco = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+    $produtosRepositorio = new ProdutoRepositorio($pdo);
+    $dadosCafe = $produtosRepositorio->getOpcoesCafe();
+    $dadosAlmoco = $produtosRepositorio->getOpcoesAlmoco();
+
     /*$produtosCafe = /* [
         [
             'nome' => 'Café Cremoso',
@@ -95,14 +92,14 @@
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-cafe-manha-produtos">
-                <?php foreach ($produtosCafe as $cafe):?>
+                <?php foreach ($dadosCafe as $cafe):?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="<?= "img/".$cafe['imagem']?>">
+                        <img src="<?= $cafe->getImgDiretorio()?>">
                     </div>
-                    <p><?=$cafe['nome']?></p>
-                    <p><?= $cafe['descricao']?></p>
-                    <p><?= "R$ ".$cafe['preco']?></p>
+                    <p><?=$cafe->getNome()?></p>
+                    <p><?= $cafe->getDescricao()?></p>
+                    <p><?= "R$ ".$cafe->getPreco()?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -113,14 +110,14 @@
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-almoco-produtos">
-                <?php foreach ($produtosAlmoco as $almoco):?>
+                <?php foreach ($dadosAlmoco as $almoco):?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="<?= "img/". $almoco['imagem']?>">
+                        <img src="<?= $almoco->getImgDiretorio()?>">
                     </div>
-                    <p><?=$almoco['nome']?></p>
-                    <p><?=$almoco['descricao']?></p>
-                    <p><?="R$ ". $almoco['preco']?></p>
+                    <p><?=$almoco->getNome()?></p>
+                    <p><?=$almoco->getDescricao()?></p>
+                    <p><?="R$ ". $almoco->getPreco()?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
