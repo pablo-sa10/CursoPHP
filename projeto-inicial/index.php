@@ -1,5 +1,13 @@
 <?php
-    $produtosCafe = [
+
+    require_once "conexao-bd.php";
+    
+    $sql1 = "SELECT * FROM serenatto.produtos WHERE tipo = 'Café'";
+    $statement = $pdo->query($sql1);
+    
+    $produtosCafe = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    /*$produtosCafe = /* [
         [
             'nome' => 'Café Cremoso',
             'descricao' => 'Café cremoso irresistível suave e que envolve seu paladar',
@@ -25,7 +33,7 @@
             'imagem' => "img/cafe-gelado.jpg"
         ]
     ];
-
+ */
     $produtosAlmoco = [
         [
             'nome' => 'Bife',
