@@ -6,6 +6,10 @@
     $statement = $pdo->query($sql1);
     
     $produtosCafe = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql2 = "SELECT * FROM serenatto.produtos WHERE tipo = 'Almoço'";
+    $statement = $pdo->query($sql2);
+    $produtosAlmoco = $statement->fetchAll(PDO::FETCH_ASSOC);
     
     /*$produtosCafe = /* [
         [
@@ -34,7 +38,7 @@
         ]
     ];
  */
-    $produtosAlmoco = [
+    /* $produtosAlmoco = [
         [
             'nome' => 'Bife',
             'descricao' => 'Bife, arroz com feijão e uma deliciosa batata frita',
@@ -59,7 +63,7 @@
             'preco' => '22.50',
             'imagem' => 'img/fettuccine.jpg' 
         ]
-        ]
+        ] */
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -94,7 +98,7 @@
                 <?php foreach ($produtosCafe as $cafe):?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="<?= $cafe['imagem']?>">
+                        <img src="<?= "img/".$cafe['imagem']?>">
                     </div>
                     <p><?=$cafe['nome']?></p>
                     <p><?= $cafe['descricao']?></p>
@@ -112,7 +116,7 @@
                 <?php foreach ($produtosAlmoco as $almoco):?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="<?= $almoco['imagem']?>">
+                        <img src="<?= "img/". $almoco['imagem']?>">
                     </div>
                     <p><?=$almoco['nome']?></p>
                     <p><?=$almoco['descricao']?></p>
