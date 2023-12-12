@@ -1,14 +1,14 @@
 <?php
 
 class Produto{
-    private $id;
+    private  $id;
     private $tipo;
     private $nome;
     private $descricao;
     private $imagem;
     private $preco;
 
-    public function __construct($id, $tipo, $nome, $descricao, $imagem, $preco)
+    public function __construct($id, $tipo, $nome, $descricao, $preco, $imagem = "logo-serenatto.png")
     {
         $this->id = $id;
         $this->tipo = $tipo;
