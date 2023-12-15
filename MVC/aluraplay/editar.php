@@ -6,21 +6,21 @@ $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if($url === false){
-    header('Location: listagem.php');
+    header('Location: /');
     exit();
 }
 
-$titulo = filter_input(INPUT_POST, 'nome');
-if($titulo === false){
-    header('Location: listagem.php');
+$nome = filter_input(INPUT_POST, 'nome');
+if($nome === false){
+    header('Location: /');
     exit();
 }
 
 $sql = 'UPDATE alura.videos SET url = :url, nome = :nome WHERE id = :id';
 $statement = $pdo->prepare($sql);
 $statement->bindValue(':url', $url);
-$statement->bindValue(':nome', $titulo);
+$statement->bindValue(':nome', $nome);
 $statement->bindValue(':id', $id, PDO::PARAM_INT);
 
 $statement->execute();
-header('Location: listagem.php');
+header('Location: /');

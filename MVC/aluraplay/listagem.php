@@ -1,7 +1,9 @@
 <?php
 
 $pdo = new PDO("mysql:host=localhost;dbname=alura", "root", "");
-$videoList = $pdo->query('SELECT * FROM alura.videos')->fetchAll(PDO::FETCH_ASSOC)
+$videoList = $pdo->query('SELECT * FROM alura.videos')->fetchAll(PDO::FETCH_ASSOC);
+
+// var_dump($videoList); exit;
 
 ?>
 
@@ -16,6 +18,7 @@ $videoList = $pdo->query('SELECT * FROM alura.videos')->fetchAll(PDO::FETCH_ASSO
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/estilos.css">
     <link rel="stylesheet" href="./css/flexbox.css">
+    <link rel="stylesheet" href="./css/estilos-form.css">
     <title>AluraPlay</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 </head>
@@ -25,7 +28,7 @@ $videoList = $pdo->query('SELECT * FROM alura.videos')->fetchAll(PDO::FETCH_ASSO
     <header>
 
         <nav class="cabecalho">
-            <a class="logo" href="./index.php"></a>
+            <a class="logo" href="./listagem.php"></a>
 
             <div class="cabecalho__icones">
                 <a href="./formulario.php" class="cabecalho__videos"></a>

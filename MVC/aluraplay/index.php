@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+// var_dump($_SERVER);
 
 
-
+?>
