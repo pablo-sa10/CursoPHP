@@ -31,7 +31,7 @@ $videoList = $pdo->query('SELECT * FROM alura.videos')->fetchAll(PDO::FETCH_ASSO
             <a class="logo" href="./listagem.php"></a>
 
             <div class="cabecalho__icones">
-                <a href="./formulario.php" class="cabecalho__videos"></a>
+                <a href="<?=$_SERVER["PHP_SELF"]?>/novo-video" class="cabecalho__videos"></a>
                 <a href="./pages/login.html" class="cabecalho__sair">Sair</a>
             </div>
         </nav>
@@ -46,8 +46,8 @@ $videoList = $pdo->query('SELECT * FROM alura.videos')->fetchAll(PDO::FETCH_ASSO
                     <img src="./img/logo.png" alt="logo canal alura">
                     <h3><?= $video['nome']; ?></h3>
                     <div class="acoes-video">
-                        <a href="./formulario.php?id=<?=$video['id'];?>">Editar</a>
-                        <a href="./remover-video.php?id=<?=$video['id']; ?>">Excluir</a>
+                        <a href="<?=$_SERVER["PHP_SELF"]?>/editar?id=<?=$video['id'];?>">Editar</a>
+                        <a href="<?=$_SERVER["PHP_SELF"]?>/remover-video?id=<?=$video['id']; ?>">Excluir</a>
                     </div>
                 </div>
             </li>

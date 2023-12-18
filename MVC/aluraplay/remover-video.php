@@ -9,4 +9,4 @@ $statement->bindValue(1, $id);
 
 $statement->execute();
 
-header('Location: /');
+header("Location: ".BASE_URL);

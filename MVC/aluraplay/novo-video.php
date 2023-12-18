@@ -4,7 +4,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=alura", "root", "");
 
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if($url === false){
-    header('Location: /');
+    header('Location: ./');
     exit();
 }
 
@@ -17,5 +17,4 @@ $statement->bindValue(2, $nome);
 
 $statement->execute();
 
-// header('Location: listagem.php');
-header('Location: /');
+header("Location: ".BASE_URL);

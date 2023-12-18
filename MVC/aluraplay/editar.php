@@ -1,18 +1,17 @@
 <?php
 
 $pdo = new PDO("mysql:host=localhost;dbname=alura", "root", "");
-
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if($url === false){
-    header('Location: /');
+    header('Location: /cursoPHP/MVC/aluraplay/');
     exit();
 }
 
 $nome = filter_input(INPUT_POST, 'nome');
 if($nome === false){
-    header('Location: /');
+    header('Location: /cursoPHP/MVC/aluraplay/');
     exit();
 }
 
@@ -23,4 +22,4 @@ $statement->bindValue(':nome', $nome);
 $statement->bindValue(':id', $id, PDO::PARAM_INT);
 
 $statement->execute();
-header('Location: /');
+header('Location: /cursoPHP/MVC/aluraplay/');
