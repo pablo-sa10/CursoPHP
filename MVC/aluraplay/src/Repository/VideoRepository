@@ -1,0 +1,61 @@
+<?php
+
+namespace aluraplay\Repository;
+use Mvc\aluraplay\Enity\Video;
+use PDO;
+
+class VideoRepository {
+    private $pdo;
+
+    public function __construct(PDO $pdo){
+        $this->pdo = $pdo;
+    }
+
+    public function add($video){
+
+        $sql = 'INSERT INTO alura.videos (url, nome) VALUES (?, ?)';
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $video->url, PDO::PARAM_STR);
+        $statement->bindValue(2, $video->nome);
+
+        $result = $statement->execute();
+
+        $id = $this->pdo->lastInsertId();
+        $video->setId($id);
+
+        return $result;
+    }
+
+    public function remove($id){
+        $sql = 'DELETE FROM alura.videos WHERE id = ?';
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(1, $id);
+        return $statement->execute();
+    }
+
+    public function update($video){
+        $sql = 'UPDATE alura.videos SET url = :url, nome = :nome WHERE id = :id';
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(':url', $video->url);
+        $statement->bindValue(':nome', $video->nome);
+        $statement->bindValue(':id', $video->id, PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function all()
+    {
+        $videoList = $this->pdo
+            ->query('SELECT * FROM alura.videos')
+            ->fetchAll(PDO::FETCH_ASSOC);
+        return array_map(
+            function($videoData){
+            $video = new Video($videoData['url'], $videoData['nome']);
+            $video->setId($videoData['id']);
+
+            return $video;
+        },
+        $videoList
+    );
+    }
+}
