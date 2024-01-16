@@ -20,10 +20,6 @@
         $produto = $produtoRepositorio->buscar($_GET['id']);
     }
 
-
-
-
-
 ?>
 
 
@@ -77,7 +73,7 @@
 
       <label for="imagem">Envie uma imagem do produto</label>
       <input type="file" name="imagem" accept="image/*" id="imagem" placeholder="Envie uma imagem">
-        <input type="hidden" name="id" value="<?= $produto->getId()?>">
+      <input type="hidden" name="id" value="<?= $produto->getId()?>">
       <input type="submit" name="editar" class="botao-cadastrar" value="Editar produto"/>
     </form>
 
